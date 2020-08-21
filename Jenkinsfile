@@ -2,12 +2,13 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Testing') {
             steps {
                 echo 'Building..'
+                sh 'mvn test'
             }
         }
-        stage('Test') {
+        stage('Sonar') {
             steps {
                 echo 'Testing..'
             }
