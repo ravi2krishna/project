@@ -8,7 +8,7 @@ pipeline {
                 sh 'mvn test'           
             }
         }
-        stage('Test') {
+        stage('Sonar') {
             steps {
                 echo 'Testing..'
             }
