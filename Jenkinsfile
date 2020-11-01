@@ -2,21 +2,24 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Validate') {
             steps {
-                echo 'Building..'
-                sh 'date'
+                sh 'mvn validate compile'
             }
         }
-        stage('Test') {
+        stage('Unit Testing') {
             steps {
-                echo 'Testing..'
-                sh 'uname'
+                sh 'mvn test'
             }
         }
-        stage('Deploy') {
+        stage('Sonar Analysis') {
             steps {
-                echo 'Deploying....'
+                sh 'mvn sonar:sonar -Dsonar.host.url=http://3.235.144.43:9000 -Dsonar.login=e2923543dd4eec65fb9908993acdea3c21dc0b2c'
+            }
+        }
+        stage('Package') {
+            steps {
+                sh 'mvn package'
             }
         }
     }
