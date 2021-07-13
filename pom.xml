@@ -4,7 +4,7 @@
   <groupId>com.web.cal</groupId>
   <artifactId>WebAppCal</artifactId>
   <packaging>war</packaging>
-  <version>1.3.4</version>
+  <version>1.3.5</version>
   <name>WebAppCal Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
