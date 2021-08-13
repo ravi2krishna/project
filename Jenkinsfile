@@ -11,7 +11,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-		sh 'mvn validate'
+		sh 'mvn compile'
             }
         }
         stage('Deploy') {
