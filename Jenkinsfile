@@ -8,9 +8,10 @@ pipeline {
 		sh 'mvn validate compile'
             }
         }
-        stage('Test') {
+        stage('Unit Test') {
             steps {
                 echo 'Testing..'
+		sh 'mvn test'
             }
         }
         stage('Deploy') {
