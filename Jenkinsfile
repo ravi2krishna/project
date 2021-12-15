@@ -34,7 +34,7 @@ pipeline {
         stage('sonarqualitygate') {
             steps {
                 echo 'Testing..'
-		#sh 'mvn test'
+		
             }
         }
 
@@ -42,7 +42,7 @@ pipeline {
         stage('Unit Test') {
             steps {
                 echo 'Testing..'
-		#sh 'mvn test'
+		
             }
         }
 
@@ -58,7 +58,7 @@ pipeline {
 	 stage('Unit Test') {
             steps {
                 echo 'Testing..'
-                #sh 'mvn test'
+               
             }
         }
 
