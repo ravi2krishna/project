@@ -10,7 +10,7 @@ pipeline {
          }   
 
 	    steps {
-            {scrip {
+            {script {
                 withSonarQubeEnv(credentialsId: 'sonarqube') {
                     echo 'validatining code..'
                     sh 'mvn sonar:sonar'
