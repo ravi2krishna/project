@@ -10,7 +10,7 @@ pipeline {
          }   
 
 	    steps {
-            {script {
+            script {
                 withSonarQubeEnv(credentialsId: 'sonarqube') {
                     echo 'validatining code..'
                     sh 'mvn sonar:sonar'
@@ -18,7 +18,7 @@ pipeline {
                 }
 
             }
-            }
+        
             
               timeout(time: 1, unit: 'HOURS'){
                   def qg = waitForQualityGate()
