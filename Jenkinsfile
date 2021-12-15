@@ -55,14 +55,14 @@ pipeline {
 
 
 
-	 stage('Unit Test') {
+	 stage('Unit Test1') {
             steps {
                 echo 'Testing..'
                
             }
         }
 
-        stage('Deploy') {
+        stage('Deploy1') {
             steps {
                 echo 'Deploying....'
             }
