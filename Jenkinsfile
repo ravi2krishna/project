@@ -10,19 +10,31 @@ pipeline {
          }   
 
 	    steps {
-                echo 'validate code..'
-		        sh 'mvn sonar:sonar \
-  -Dsonar.host.url=http://52.66.247.59:9000 \
-  -Dsonar.login=28f447710c54b726adc659d96c8ebcae3decff89'
+            {scrip {
+                withSonarQubeEnv(credentialsId: 'sonarqube') {
+                    echo 'validatining code..'
+                    sh 'mvn sonar:sonar'
+
+                }
+
             }
+            }
+            
+              timeout(time: 1, unit: 'HOURS'){
+                  def qg = waitForQualityGate()
+                  if (qg.status != 'OK'){
+                      error "Pipeline aborted due to quality gate failure: ${qg.status}"
+                  }
+              }
+        }
         }
 
 
 ####################
-        stage('Unit Test') {
+        stage('sonarqualitygate') {
             steps {
                 echo 'Testing..'
-		sh 'mvn test'
+		#sh 'mvn test'
             }
         }
 ####################
@@ -30,7 +42,7 @@ pipeline {
         stage('Unit Test') {
             steps {
                 echo 'Testing..'
-		sh 'mvn test'
+		#sh 'mvn test'
             }
         }
 ####################
@@ -46,7 +58,7 @@ pipeline {
 	 stage('Unit Test') {
             steps {
                 echo 'Testing..'
-                sh 'mvn test'
+                #sh 'mvn test'
             }
         }
 ###################
