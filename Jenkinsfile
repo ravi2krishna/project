@@ -1,6 +1,6 @@
 pipeline {
     agent any
-###################
+
     stages {
         stage('sonarQualityCheck') {
             agent{ 
@@ -30,14 +30,14 @@ pipeline {
         }
 
 
-####################
+
         stage('sonarqualitygate') {
             steps {
                 echo 'Testing..'
 		#sh 'mvn test'
             }
         }
-####################
+
 
         stage('Unit Test') {
             steps {
@@ -45,7 +45,7 @@ pipeline {
 		#sh 'mvn test'
             }
         }
-####################
+
 
         stage('Deploy') {
             steps {
@@ -53,7 +53,7 @@ pipeline {
             }
         }
 
-####################
+
 
 	 stage('Unit Test') {
             steps {
@@ -61,7 +61,7 @@ pipeline {
                 #sh 'mvn test'
             }
         }
-###################
+
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
