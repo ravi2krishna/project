@@ -21,22 +21,6 @@ public class Calculator extends HttpServlet
 		return first*second;
 	}
 	
-	main() {
-  Record city;
-  lnode *list = NULL;
-
-  while (data_to_read()) {
-    Readin_data(&city);
-    insert(&city, &list);
-  }
-}
-
-void insert(Record*& city, lnode*& list) {
-  lnode* ptr = new lnode;
-  ptr->next = list;
-  list = ptr;
-  prt->data = city;
-}
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
