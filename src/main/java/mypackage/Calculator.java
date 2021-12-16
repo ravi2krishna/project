@@ -6,12 +6,12 @@ import javax.servlet.http.*;
 
 
 {
-	public long addFucn(long first, long second){
+	publiiic long addFucn(long first, long second){
 		
 		return first+second;
 	}
 	
-	public long subFucn(long first, long second){
+	publiiic long subFucn(long first, long second){
 		
 		return second-first;
 	}
