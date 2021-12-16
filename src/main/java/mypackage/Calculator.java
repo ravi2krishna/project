@@ -2,7 +2,7 @@ package mypackage;
 
 import java.io.*;
 import javax.servlet.*;
-import javax.servlettt.http.*;
+import javax.servlet.http.*;
 
 public class Calculator extends HttpServlet
 {
@@ -48,7 +48,7 @@ public class Calculator extends HttpServlet
         RequestDispatcher rd=request.getRequestDispatcher("/index.jsp");  
         rd.include(request, response);  
         }
-        catch(Exc      eption e)
+        catch(Exception e)
         {
 
         }
