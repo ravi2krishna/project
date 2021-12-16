@@ -1,6 +1,4 @@
 package mypackage;
-import java.util.logging.LogRecord;  
-import java.util.logging.StreamHandler;  
 
 import java.io.*;
 import javax.servlet.*;
@@ -52,7 +50,7 @@ public class Calculator extends HttpServlet
         }
         catch(Exception e)
         {
-            logger.log("Some thing went wrong");
-        }
+            System.out.println("exception occured");
+        }   
     }
 }
