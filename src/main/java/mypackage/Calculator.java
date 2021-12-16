@@ -10,7 +10,7 @@ import javax.servlet.http.*;
 
 public class Calculator extends HttpServlet
 {
-    public static final Logger LOGGER = Logger.getLogger(Calculator.class.getName());
+    
     //public static final Logger logger = Logger.getLogger(Calculator.class);
 	public long addFucn(long first, long second){
 		
@@ -28,6 +28,7 @@ public class Calculator extends HttpServlet
 	}
 	
     @Override
+    public static final Logger LOGGER = Logger.getLogger(Calculator.class.getName());
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         
