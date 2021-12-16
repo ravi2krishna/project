@@ -2,6 +2,9 @@ pipeline {
     agent any
 
     stages {
+        
+
+        
         stage('sonarQualityCheck') {
             agent{ 
 	       docker { 
@@ -17,7 +20,6 @@ pipeline {
 
                 }
 
-            }
         
             
               timeout(time: 1, unit: 'HOURS'){
@@ -28,7 +30,7 @@ pipeline {
               }
         }
         }
-
+        }
 
 
         stage('sonarqualitygate') {
