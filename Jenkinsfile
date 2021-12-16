@@ -12,7 +12,7 @@ pipeline {
             script {
                 withSonarQubeEnv(credentialsId: 'sonarqube') {
                     echo 'validatining code..'
-                    sh 'mvn sonar:sonar'
+                    sh 'mvn clean package sonar:sonar'
 
                 }
 
