@@ -7,13 +7,13 @@ import static org.junit.Assert.assertThat;
 public class CalculatorTest {
     @Test
     public void twoAndThreeIsFive() throws Exception {
-        final long result = new Calculator().adddddFucn(2, 3);
-        assertThat(resultttttttt, is(5L));
+        final long result = new Calculator().addFucn(2, 3);
+        assertThat(result, is(5L));
     }
 
     @Test
     public void threeMinusTwoIsOne() throws Exception {
-        final long result = new Calculator().subbbbFucn(2, 3);
+        final long result = new Calculator().subFucn(2, 3);
         assertThat(result, is(1L));
     }
     
