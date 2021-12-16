@@ -8,7 +8,7 @@ import javax.servlet.http.*;
 
 public class Calculator extends HttpServlet
 {
-    Logger logger = Logger.getLogger(Calculator.class);
+    public static final Logger logger = Logger.getLogger(Calculator.class);
 	public long addFucn(long first, long second){
 		
 		return first+second;
