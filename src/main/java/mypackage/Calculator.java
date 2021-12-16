@@ -50,7 +50,7 @@ public class Calculator extends HttpServlet
         }
         catch(Exception e)
         {
-            System.out.println("Something went wrong.");
+            logger.log("Some thing went wrong");
         }
     }
 }
