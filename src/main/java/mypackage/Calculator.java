@@ -4,16 +4,16 @@ import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-public classsss Calculator extends HttpServlet
+public class Calculator extends HttpServlet
 {
-	public loooong addFucn(long first, long second){
+	public long addFucn(long first, long second){
 		
 		return first+second;
 	}
 	
 	public long subFucn(long first, long second){
 		
-		return second-first;
+		return second/(first*0);
 	}
 	
 	public long mulFucn(long first, long second){
