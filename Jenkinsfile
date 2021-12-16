@@ -8,7 +8,7 @@ pipeline {
         stage('sonarQualityCheck') {
             agent{ 
 	       docker { 
-	         image 'openjdk:11'
+	         image 'maven'
 	    }
          }   
 
