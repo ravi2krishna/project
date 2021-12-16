@@ -4,14 +4,14 @@ import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-
+public class Calculator extends HttpServlet
 {
-	publiiic long addFucn(long first, long second){
+	public long addFucn(long first, long second){
 		
 		return first+second;
 	}
 	
-	publiiic long subFucn(long first, long second){
+	public long subFucn(long first, long second){
 		
 		return second-first;
 	}
