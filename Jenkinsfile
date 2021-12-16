@@ -36,7 +36,7 @@ pipeline {
 
         stage('Nexus Release') {
             steps {
-                nexusArtifactUploader artifacts: [[artifactId: 'WebAppCal', classifier: '', file: 'JavaWebCalculator/target/WebAppCal-1.3.2.war', type: 'war']], credentialsId: 'nexus', groupId: 'com.web.cal', nexusUrl: '172.31.44.35:8081/', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-releases', version: '1.3.2'
+                nexusArtifactUploader artifacts: [[artifactId: 'WebAppCal', classifier: '', file: 'target/WebAppCal-1.3.2.war', type: 'war']], credentialsId: 'nexus', groupId: 'com.web.cal', nexusUrl: '172.31.44.35:8081/', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-releases', version: '1.3.2'
 		
             }
         }
