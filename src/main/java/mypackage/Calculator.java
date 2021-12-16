@@ -1,6 +1,8 @@
 package mypackage;
-import org.apache.log4j.Logger;
-
+package com.javacodegeeks.corejava.util.logging;
+ 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import java.io.*;
 import javax.servlet.*;
@@ -8,7 +10,8 @@ import javax.servlet.http.*;
 
 public class Calculator extends HttpServlet
 {
-    public static final Logger logger = Logger.getLogger(Calculator.class);
+    public static final Logger LOGGER = Logger.getLogger(Calculator.class.getName());
+    //public static final Logger logger = Logger.getLogger(Calculator.class);
 	public long addFucn(long first, long second){
 		
 		return first+second;
@@ -54,7 +57,7 @@ public class Calculator extends HttpServlet
         }
         catch(Exception e)
         {
-           logger.error("exception occurred ");
+           LOGGER.log(Level.SEVERE, "Exception occur", ex);
         }   
     }
 }
