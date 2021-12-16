@@ -21,7 +21,7 @@ public class Calculator extends HttpServlet
 		return first*second;
 	}
 	
-
+    @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         try
@@ -50,7 +50,7 @@ public class Calculator extends HttpServlet
         }
         catch(Exception e)
         {
-
+            out.println("<h1>error</h1>");
         }
     }
 }
