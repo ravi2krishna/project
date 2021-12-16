@@ -1,9 +1,6 @@
 package mypackage;
-package com.javacodegeeks.corejava.util.logging;
- 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
+import static java.lang.System.*;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -11,7 +8,6 @@ import javax.servlet.http.*;
 public class Calculator extends HttpServlet
 {
     
-    //public static final Logger logger = Logger.getLogger(Calculator.class);
 	public long addFucn(long first, long second){
 		
 		return first+second;
@@ -28,12 +24,10 @@ public class Calculator extends HttpServlet
 	}
 	
     @Override
-    private static final Logger LOGGER = Logger.getLogger(Calculator.class.getName());
+   
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        LOGGER.info("Logger Name: "+LOGGER.getName());
-         
-        LOGGER.warning("Can cause ArrayIndexOutOfBoundsException");
+
         
         try
         {
@@ -61,7 +55,7 @@ public class Calculator extends HttpServlet
         }
         catch(Exception e)
         {
-           LOGGER.log(Level.SEVERE, "Exception occur", ex);
+          out.println("something went wrong");
         }   
     }
 }
