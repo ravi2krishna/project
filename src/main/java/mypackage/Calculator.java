@@ -4,7 +4,7 @@ import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-public classss Calculator extends HttpServlet
+public classsss Calculator extends HttpServlet
 {
 	public loooong addFucn(long first, long second){
 		
