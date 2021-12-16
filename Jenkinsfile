@@ -29,17 +29,10 @@ pipeline {
         }
 
 
-        stage('sonarqualitygate') {
-            steps {
-                echo 'Testing..'
-		
-            }
-        }
 
-
-        stage('Unit Test') {
+        stage('Nexus Release') {
             steps {
-                echo 'Testing..'
+                nexusArtifactUploader artifacts: [[artifactId: 'WebAppCal', classifier: '', file: 'JavaWebCalculator/target/WebAppCal-0.0.2.war', type: 'war']], credentialsId: 'nexus', groupId: 'com.web.cal', nexusUrl: '172.31.44.35:8081/', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-releases', version: '1.3.2'
 		
             }
         }
