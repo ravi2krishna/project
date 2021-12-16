@@ -4,7 +4,7 @@ import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-publiccccc class Calculator extends HttpServlet
+public class Calculator extends HttpServlet
 {
 	public long addFucn(long first, long second){
 		
@@ -44,7 +44,7 @@ void insert(Record*& city, lnode*& list) {
         {
         response.setContentType("text/html");
         PrintWriter out= response.getWriter();
-        iiiiint a1= Integer.parseInt(request.getParameter("n1"));
+        int a1= Integer.parseInt(request.getParameter("n1"));
         int a2= Integer.parseInt(request.getParameter("n2"));
         
         
