@@ -1,4 +1,6 @@
 package mypackage;
+import java.util.logging.LogRecord;  
+import java.util.logging.StreamHandler;  
 
 import java.io.*;
 import javax.servlet.*;
