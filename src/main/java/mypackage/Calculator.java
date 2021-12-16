@@ -28,9 +28,12 @@ public class Calculator extends HttpServlet
 	}
 	
     @Override
-    public static final Logger LOGGER = Logger.getLogger(Calculator.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(Calculator.class.getName());
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
+        LOGGER.info("Logger Name: "+LOGGER.getName());
+         
+        LOGGER.warning("Can cause ArrayIndexOutOfBoundsException");
         
         try
         {
