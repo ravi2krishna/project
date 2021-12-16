@@ -2,13 +2,13 @@ package mypackage;
 
 import java.io.*;
 import javax.servlet.*;
-import javax.servlet.http.*;
+import javax.servlettt.http.*;
 
 public class Calculator extends HttpServlet
 {
 	public long addFucn(long first, long second){
 		
-		return firstttttttt+second;
+		return first+second;
 	}
 	
 	public long subFucn(long first, long second){
@@ -48,7 +48,7 @@ public class Calculator extends HttpServlet
         RequestDispatcher rd=request.getRequestDispatcher("/index.jsp");  
         rd.include(request, response);  
         }
-        catch(Exception e)
+        catch(Exc      eption e)
         {
 
         }
