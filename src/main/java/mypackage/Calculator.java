@@ -1,8 +1,8 @@
 package mypackage;
 
 import java.io.*;
-import javax.servlet.*;
-import javax.servlet.http.*;
+//import javax.servlet.*;
+#import javax.servlet.http.*;
 
 public class Calculator extends HttpServlet
 {
