@@ -6,11 +6,7 @@ pipeline {
 
         
         stage('sonarQualityCheck') {
-            agent{ 
-	       docker { 
-	         image 'maven'
-	    }
-         }   
+     
 
 	    steps {
             script {
