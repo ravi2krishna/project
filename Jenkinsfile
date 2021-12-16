@@ -28,7 +28,11 @@ pipeline {
         }
         }
 
-
+        stage('Build war file') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
 
         stage('Nexus Release') {
             steps {
