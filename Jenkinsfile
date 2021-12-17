@@ -1,13 +1,11 @@
 pipeline {
     agent any
+    environment{
+        VERSION = "${env.BUILD_ID}"
+    }
 
     stages {
-        
-
-        
-        stage('sonarQualityCheck') {
-     
-
+       stage('sonarQualityCheck') {
 	    steps {
             script {
                 withSonarQubeEnv('sonar-server') {
@@ -16,9 +14,7 @@ pipeline {
                   
                 }
 
-        
-            
-              timeout(time: 1, unit: 'HOURS'){
+                timeout(time: 1, unit: 'HOURS'){
                   def qg = waitForQualityGate()
                   if (qg.status != 'OK'){
                       error "Pipeline aborted due to quality gate failure: ${qg.status}"
@@ -41,10 +37,19 @@ pipeline {
             }
         }
 
-
-        stage('Deploy') {
+        stage('docker build and docker push') {
             steps {
-                echo 'Deploying....'
+                script{
+                    withCredentials([string(credentialsId: 'registry_pw', variable: 'registry_password')]) {
+                       sh '''
+                       docker build -t 172.31.44.35:8082/webappcal:${VERSION} .
+                       docker login -u admin -p $registry_password 172.31.44.35:8082
+                       docker push 172.31.44.35:8082/webappcal:${VERSION}
+                       docker rmi 172.31.44.35:8082/webappcal:${VERSION}
+                       '''
+                    }
+                   
+                }
             }
         }
 
