@@ -43,6 +43,7 @@ pipeline {
                     withCredentials([string(credentialsId: 'registry_pw', variable: 'registry_password')]) {
                        sh '''
                        docker build -t 172.31.44.35:8082/webappcal:${VERSION} .
+                       docker tag 172.31.44.35:8082/webappcal:${VERSION} 172.31.44.35:8082/webappcal:latest
                        docker login -u admin -p $registry_password 172.31.44.35:8082
                        docker push 172.31.44.35:8082/webappcal:${VERSION}
                        docker rmi 172.31.44.35:8082/webappcal:${VERSION}
@@ -55,7 +56,7 @@ pipeline {
 
 
 
-	 stage('Unit Test1') {
+	    stage('Unit Test1') {
             steps {
                 echo 'Testing..'
                
@@ -67,6 +68,12 @@ pipeline {
                 echo 'Deploying....'
             }
         }
+
+        post { 
+            always { 
+               mail bcc: '', body: '<br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}', cc: '', from: '', replyTo: '', subject: '${currentBuild.result} CI: Project name -> ${env.JOB_NAME}', to: 'muqeeth.23@gmail.com'
+        }
+    }
 
 
 
