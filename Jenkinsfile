@@ -5,7 +5,7 @@ pipeline {
     }
 
     stages {
-       stage('sonarQualityCheck') {
+        stage('sonarQualityCheck') {
 	    steps {
             script {
                 withSonarQubeEnv('sonar-server') {
@@ -53,26 +53,28 @@ pipeline {
                 }
             }
         }
-
-
-
-	    stage('Unit Test1') {
+	    stage('Manual approval') {
             steps {
-                echo 'Testing..'
-               
+                timeout(10) {
+                        mail bcc: '', body: "Please click on the below link to review and approve deployment http://13.233.214.250:8080/job/pipeline_test/${env.BUILD_NUMBER}/console ", cc: '', from: '', replyTo: '', subject: 'Need approval to deploy', to: 'muqeeth.23@gmail.com'
+                        input id: 'Deploygate', message: "Deploy ${env.JOB_NAME}?", ok: 'deploy' 
+                        }
             }
         }
 
-        stage('Deploy1') {
+        stage('Deploy with approval') {
             steps {
-                echo 'Deploying....'
+                script{
+                    withCredentials([kubeconfigFile(credentialsId: '7f2f53d9-632b-46e9-a7fc-ab7349cdf007', variable: 'KUBECONFIG')]) {    
+                        dir('k8smanifest') {
+                            kubectl apply -f deployment.yml
+                        }                    
+                    
+                    }
+                }
+                
             }
         }
-
-        
-
-
-
 
     }
     post {
