@@ -24,11 +24,13 @@
     <artifactId>servlet-api</artifactId>
     <version>2.5</version>
 </dependency>
+
+
 </dependencies>
 <distributionManagement>
   <repository>
     <id>releases</id>
-    <url>http://52.53.153.183:8081/nexus/content/repositories/releases</url>
+    <url></url>
   </repository>
 </distributionManagement>
 </project>

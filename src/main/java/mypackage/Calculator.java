@@ -1,11 +1,13 @@
 package mypackage;
 
+import static java.lang.System.*;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
 public class Calculator extends HttpServlet
 {
+    
 	public long addFucn(long first, long second){
 		
 		return first+second;
@@ -13,7 +15,7 @@ public class Calculator extends HttpServlet
 	
 	public long subFucn(long first, long second){
 		
-		return second-first;
+		return second/first;
 	}
 	
 	public long mulFucn(long first, long second){
@@ -21,9 +23,12 @@ public class Calculator extends HttpServlet
 		return first*second;
 	}
 	
-	
+    @Override
+   
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
+
+        
         try
         {
         response.setContentType("text/html");
@@ -50,7 +55,7 @@ public class Calculator extends HttpServlet
         }
         catch(Exception e)
         {
-
-        }
+          out.println("something went wrong");
+        }   
     }
 }
