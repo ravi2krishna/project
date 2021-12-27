@@ -67,7 +67,9 @@ pipeline {
                 script{
                     withCredentials([kubeconfigFile(credentialsId: '7f2f53d9-632b-46e9-a7fc-ab7349cdf007', variable: 'KUBECONFIG')]) {    
                         dir('k8smanifest') {
+                            kubectl create secret docker-registry registry-secret --docker-username=admin --docker-password=admin123 --docker-email=admin@test.com --docker-server=http://172.31.44.35:8082
                             kubectl apply -f deployment.yml
+                            kubectl apply -f service.yml
                         }                    
                     
                     }
