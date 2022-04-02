@@ -4,18 +4,17 @@ pipeline {
     stages {
         stage('Validate') {
             steps {
-                sh 'uname'
-                sh 'cat /etc/os-release'
+                sh 'mvn validate'
             }
         }
         stage('Unit Test') {
             steps {
-                echo 'Testing..'
+                sh 'mvn test'
             }
         }
         stage('Build') {
             steps {
-                echo 'Deploying....'
+                sh 'mvn package'
             }
         }
     }
