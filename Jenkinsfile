@@ -4,7 +4,8 @@ pipeline {
     stages {
         stage('Validate') {
             steps {
-                echo 'Building..'
+                sh 'uname'
+                sh 'cat /etc/os-release'
             }
         }
         stage('Unit Test') {
