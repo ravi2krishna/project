@@ -4,7 +4,6 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-		sh 'cat /etc/os-release'
                 echo 'Building..'
             }
         }
