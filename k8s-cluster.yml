@@ -1,0 +1,44 @@
+---
+- name: update server
+  hosts: localhost
+  become: yes
+
+  tasks:
+
+  - name: ensure epel-release is present
+    package:
+      name: epel-release
+      state: present
+
+  - name: ensure pip is present
+    package:
+      name: python-pip
+      state: present
+
+  - name: Install boto3 and botocore with pip3 module
+    vars:
+        ansible_python_interpreter: /usr/bin/python3
+    pip:
+      name:
+      - boto3
+      - botocore
+
+
+
+  - name: ensure bucket is created
+    vars:
+        ansible_python_interpreter: /usr/bin/python3
+    s3_bucket:
+      name: k8-project-122154
+      state: present
+    environment:
+      KOPS_STATE_STORE: s3://k8-project-122154
+
+- name: update web servers
+  hosts: localhost
+
+  tasks:
+  - name: Create Cluster
+    shell: kops create cluster --yes --state=s3://k8-project-122154 --zones=us-east-1a,us-east-1b --node-count=2 --name=test.k8s.local
+...
+
