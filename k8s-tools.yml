@@ -1,0 +1,55 @@
+---
+- name: update server
+  hosts: localhost
+  vars:
+    kops_download_path: "https://github.com/kubernetes/kops/releases/download/{{ kops_stable_version }}/kops-linux-amd64"
+
+  tasks:
+  - name: Add Kubernetes Repository
+    yum_repository:
+      name: Kubernetes
+      description: Kubernetes Repo
+      baseurl: https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+      enabled: yes
+      gpgcheck: no
+      repo_gpgcheck: no
+      gpgkey:
+        - https://packages.cloud.google.com/yum/doc/yum-key.gpg
+        - https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+      state: present
+    become: yes
+
+  - name: Install Kubectl
+    yum:
+      name: kubectl
+      state: present
+    become: yes
+
+  - name: Kops Latest Release
+    uri:
+      url: https://api.github.com/repos/kubernetes/kops/releases/latest
+      return_content: yes
+    register: kops_ver
+
+  - name: Print Latest Tag
+    debug:
+      var: kops_ver.json['tag_name']
+
+  - name: Set kops version
+    set_fact:
+      kops_stable_version={{ kops_ver. json['tag_name'] }}
+
+  - name: Setup KOPS
+    get_url:
+      url: "{{ kops_download_path }}"
+      dest: /usr/local/bin/kops
+      mode: 0755
+    become: yes
+
+  - name: Generate SSH keypair
+    openssh_keypair:
+      path: /home/centos/.ssh/id_rsa
+      state: present
+
+...
+
