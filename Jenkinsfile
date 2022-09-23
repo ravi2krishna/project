@@ -11,6 +11,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
+		sh '/usr/share/maven/bin/mvn test'
             }
         }
         stage('Deploy') {
