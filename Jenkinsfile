@@ -11,7 +11,6 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-		hello
 		sh '/usr/share/maven/bin/mvn package'
             }
         }
